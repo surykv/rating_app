@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+ tbody {
+  border: 1px solid #ccc;
+}

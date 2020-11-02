@@ -10,11 +10,14 @@
   </thead>
 
   <tbody>
+    <tr>
+      <th> Name </th>
+      <th> Movies <th>
+    </tr>
     <% @actors.each do |actor| %>
       <tr>
-        <td><%= link_to 'Show', actor %></td>
-        <td><%= link_to 'Edit', edit_actor_path(actor) %></td>
-        <td><%= link_to 'Destroy', actor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= actor.name %></td>
+        <td><%= actor.movies.pluck(:name) %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +25,4 @@
 
 <br>
 
-<%= link_to 'New Actor', new_actor_path %>
+<%= link_to 'View Movies', root_path %>

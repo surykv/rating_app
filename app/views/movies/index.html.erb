@@ -10,11 +10,24 @@
   </thead>
 
   <tbody>
+    <tr>
+      <th> Name </th>
+      <th> Description </th>
+      <th> Year </th>
+      <th> Average Rating </th>
+      <th> Actors </th>
+      <th> Directors </th>
+      <th> Film Locations </th>
+    </tr>
     <% @movies.each do |movie| %>
       <tr>
-        <td><%= link_to 'Show', movie %></td>
-        <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
-        <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= movie.name %></td>
+        <td><%= movie.description %></td>
+        <td><%= movie.year %></td>
+        <td><%= @average_ratings[movie.id] %></td>
+        <td><%= movie.crew_members.actors.pluck(:name) %></td>
+        <td><%= movie.crew_members.directors.pluck(:name) %></td>
+        <td><%= movie.film_locations.pluck(:location_name, :country) %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +35,4 @@
 
 <br>
 
-<%= link_to 'New Movie', new_movie_path %>
+<%= link_to 'View Actors', actors_path %>
